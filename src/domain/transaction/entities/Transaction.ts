@@ -2,7 +2,7 @@ import { ETransactionStatus } from 'shared/types/transaction/ETransactionStatus'
 import { ETransactionType } from 'shared/types/transaction/ETransactionType'
 
 export class Transaction {
-  private id?: string
+  private _id?: string | undefined
   private customerId?: string
   private type?: ETransactionType
   private status?: ETransactionStatus
@@ -14,7 +14,7 @@ export class Transaction {
   private updatedAt?: Date
 
   constructor(
-    id: string,
+    _id: string,
     customerId: string,
     type: ETransactionType,
     status: ETransactionStatus,
@@ -34,6 +34,13 @@ export class Transaction {
     this.setToCustomerId(toCustomerId)
     this.setCreatedAt(createdAt)
     this.setUpdatedAt(updatedAt)
+  }
+
+  public getId() {
+    return this._id
+  }
+  public setId(id: string) {
+    this._id = id
   }
 
   public setCustomerId(customerId: string) {
